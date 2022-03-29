@@ -1,10 +1,12 @@
 const container = document.querySelector("#container");
 const box = document.querySelector("#title");
-const resetButton = document.querySelector('#resetbtn');
 const gridButton = document.querySelector('#gridbtn');
+const input = document.querySelector("input");
+const errorBox =  document.getElementById('errormessage');
 
 let sideWidth = 20;
 let containerWidth = 500;
+
 container.style.width = `${containerWidth}px`;
 container.style.height = `${containerWidth}px`;
 
@@ -31,6 +33,11 @@ function makeGrid(width) {
     const boxes = document.querySelectorAll('.box');
     let colSize = container.style.gridTemplateColumns;
     let rowSize = container.style.gridTemplateRows;
+
+    if (!width) {
+        return;
+    }
+
     boxes.forEach(box => {
         container.removeChild(box);
     });
@@ -45,33 +52,40 @@ function makeGrid(width) {
         rowSize += `${(containerWidth+5)/width-5}px `;
         container.style.gridTemplateRows = rowSize;
     }
-    
     for (let i = 0; i < width * width; i++) {
         makeBox(width);
     }
 }
 
+//Creates a new box with user chosen size.
 function gridPrompt() {
-    let width = prompt("What width would you like?");
-    while (typeof(width) != "number") {
-        width = prompt("Please enter an integer.");
+    if (input.value > 100 || input.value < 1) {
+        errorBox.classList.add("errorbox");
+        errorBox.innerText = "Please enter a number between 1 and 100.";  
+    } else if (!parseInt(input.value) || input.value.match(/^[0-9]+$/) === null)
+    {
+        errorBox.classList.add("errorbox");
+        errorBox.innerText = "Please enter an integer."
+    } else {
+        errorBox.classList.remove("errorbox");
+        errorBox.innerText = ""
+        return input.value;
     }
-
-    while (width > 100) {
-        width = prompt("Please choose a number between 1 and 100.");
-    }
-
-    return width;
-
 }
 
 makeGrid(4);
 
-resetButton.addEventListener('click', reset)
-gridButton.addEventListener('click', function(){makeGrid(gridPrompt())})
+gridButton.addEventListener('click', function(){
+    makeGrid(gridPrompt())
+});
 
-
+input.addEventListener('keydown', key => {
+    if (key.code === "Enter") {
+        makeGrid(gridPrompt());
+    }
+});
 
 box.addEventListener('click', makeBox);
+
 
 

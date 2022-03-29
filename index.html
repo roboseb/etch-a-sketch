@@ -5,20 +5,18 @@
         <title>Seb's Etch-a-Sketch</title>
         <link rel="stylesheet" href="styles.css">
     </head>
+
     <body>
         <h1 id="title">THIS IS AN ETCH A SKETCH</h1>
-        <button id="resetbtn">RESET</button>
-        <button id="gridbtn">MAKE NEW GRID</button>        
+        <button id="gridbtn"><strong>MAKE NEW GRID</strong></button>  
+        <div id=errorcontainer>      
+            <input id="input" class="errorbox" placeholder="Choose a grid size!">
+            <div id="errormessage"></div>   
+        </div>
         <div id="container"></div>
-
-
-
-
-
-
-
-
+        
     </body>
 
     <script src="javascript.js"></script>
+
 </html>

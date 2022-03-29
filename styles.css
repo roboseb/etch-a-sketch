@@ -1,10 +1,14 @@
 h1 {
-    color:goldenrod;
+    color:#cbf3d2;
+    margin: 20px;
+    padding:0px;
 }
 
 .box {
-    background-color:greenyellow;
-
+    background-color:royalblue;
+    border-style:inset;
+    border-color: #cbf3d2;
+    border-width: 2.5px;
     height: 150px;
     width: 150px;
 }
@@ -17,15 +21,54 @@ h1 {
     grid-template-rows: 150px 150px 150px 150px;
     column-gap: 5px;
     row-gap: 5px;
+    margin: 20px;
 }
 
 .hovered-box {
-    background-color: green;
+    background-color:#cbf3d2;
 }
 
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: black;
+    background-color: #330C2F;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#gridbtn {
+    margin: 20px;
+    background-color: #a371ad;
+    border-radius: 0px;
+    border-style:solid;
+    padding: 20px;
+    color: #cbf3d2;
+    border-color: #cbf3d2;
+    font-size: 18px;
+}
+
+.errorbox{
+    background-color: #cbf3d2;
+    color: #330C2F;
+    margin: 10px;
+    padding:5px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width:5px;
+    border-color:#a371ad;
+}
+/*
+#errormessage {
+    border-style:solid;
+    padding: 5px;
+    color: #cbf3d2;
+    border-color: #cbf3d2;
+    margin: 20px;
+    background-color: #a371ad;    
+}
+*/
+#errorcontainer {
+    display:flex;
+    
+    
 }
